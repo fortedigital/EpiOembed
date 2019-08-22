@@ -1,0 +1,27 @@
+﻿@using EpiserverPlayground
+@model PageViewModel<EpiserverPlayground.Models.Pages.PlaygroundPage>
+
+@{ Layout = "~/Views/Shared/Layouts/_LeftNavigation.cshtml"; }
+
+<h1>Hello world</h1>
+
+<h2>Flickr oembed</h2>
+<div>
+    @Html.GetOembedHtml()
+</div>
+<br /><br />
+<h2>YouTube oembed</h2>
+<div>
+    @Html.GetOembedHtml(@"https://www.youtube.com/oembed?url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DiwGFalTRHDA")
+</div>
+<br /><br />
+<h2>Twitter oembed</h2>
+<div>
+    @Html.GetOembedHtml(@"https://publish.twitter.com/oembed?url=https%3A%2F%2Ftwitter.com%2FInterior%2Fstatus%2F507185938620219395")
+</div>
+<br /><br />
+<h2>Instagram oembed</h2>
+<div>
+    @Html.GetOembedHtml(@"https://api.instagram.com/oembed?url=http%3A%2F%2Finstagram.com%2Fp%2FV8UMy0LjpX%2F")
+</div>
+<br /><br />

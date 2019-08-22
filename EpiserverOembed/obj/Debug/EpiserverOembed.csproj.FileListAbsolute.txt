@@ -1,0 +1,6 @@
+E:\Dev\Repos\EpiserverOembed\EpiserverOembed\EpiserverOembed\bin\Debug\EpiserverOembed.dll
+E:\Dev\Repos\EpiserverOembed\EpiserverOembed\EpiserverOembed\bin\Debug\EpiserverOembed.pdb
+E:\Dev\Repos\EpiserverOembed\EpiserverOembed\EpiserverOembed\obj\Debug\EpiserverOembed.csprojAssemblyReference.cache
+E:\Dev\Repos\EpiserverOembed\EpiserverOembed\EpiserverOembed\obj\Debug\EpiserverOembed.csproj.CoreCompileInputs.cache
+E:\Dev\Repos\EpiserverOembed\EpiserverOembed\EpiserverOembed\obj\Debug\EpiserverOembed.dll
+E:\Dev\Repos\EpiserverOembed\EpiserverOembed\EpiserverOembed\obj\Debug\EpiserverOembed.pdb
