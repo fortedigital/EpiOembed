@@ -4,7 +4,7 @@ namespace Episerver.Oembed
 {
     public interface IOEmbedBlock
     {
-        string MediaUrl { get; }
+        string MediaUrl { get; set; }
 
         string ThumbnailUrl { get; set; }
 

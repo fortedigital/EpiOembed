@@ -11,7 +11,8 @@ namespace EpiserverPlayground.Models.Pages
     [ContentType(DisplayName = "TestingPage", GUID = "A6EE3B06-AA07-411D-8EC5-056D9FDAC588", Description = "")]
     public class TestingPage : StandardPage
     {
+        [AllowedTypes(typeof(IOEmbedBlock))]
+        public virtual ContentArea EmbedBlock { get; set; }
         
-        public virtual YouTubeBlock YouTubeBlock { get; set; }
     }
 }

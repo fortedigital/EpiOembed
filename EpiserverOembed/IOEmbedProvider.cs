@@ -1,7 +1,12 @@
+using Newtonsoft.Json.Linq;
+
 namespace Episerver.Oembed
 {
     public interface IOEmbedProvider
     {
-        bool TryInterpretUrl();
+        bool CanInterpretMediaUrl(string url);
+
+        JObject MakeRequest(IOEmbedBlock block);
+
     }
 }

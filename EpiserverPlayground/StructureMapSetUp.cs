@@ -11,7 +11,7 @@ namespace EpiserverPlayground
     [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
     public class StructureMapSetUp : IConfigurableModule
     {
-        private IContainer _container;
+        //private IContainer _container;
 
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
