@@ -1,12 +1,16 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
+using EPiServer.Logging;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace Episerver.Oembed
@@ -17,29 +21,29 @@ namespace Episerver.Oembed
     public class OEmbedModule : IInitializableModule
     {
         private IOEmbedProvider[] _providers;
+        private readonly ILogger _logger = LogManager.GetLogger();
         
         private void ContentEventHandler(object sender, ContentEventArgs e)
         {
-            /*w którym szukamy, czy mamy zarejestrowany IOEmbedProvider,
-             który potrafi zinterpretować MediaUrl, 
-             jeśli tak to pozwalamy mu pociagnac EmbedResponse 
-             i populujemy ThumbnailUrl i EmbedHtml.
-             */
+            
             if (!(e.Content is IOEmbedBlock embedBlock))
                 return;
 
             if (embedBlock.MediaUrl == null)
                 return;
             
+            //TODO: first or default? maybe other way to choose
             var foundProvider = _providers.FirstOrDefault(x => x.CanInterpretMediaUrl(embedBlock.MediaUrl));
             if(foundProvider == null)
                 return;
             
-            JObject json = foundProvider.MakeRequest(embedBlock);
+            JObject json = MakeRequest(embedBlock, foundProvider);
+            if(json == null)
+                return;
 
             embedBlock.EmbedResponse = json.ToString();
-            embedBlock.ThumbnailUrl = json["thumbnail_url"].ToString();
-            embedBlock.EmbedHtml = new XhtmlString(json["html"].ToString());
+            embedBlock.ThumbnailUrl = json["thumbnail_url"]?.ToString();
+            embedBlock.EmbedHtml = new XhtmlString(json["html"]?.ToString());
 
         }
         
@@ -52,6 +56,35 @@ namespace Episerver.Oembed
         public void Uninitialize(InitializationEngine context)
         {
             context.Locate.ContentEvents().PublishingContent -= ContentEventHandler;
+        }
+        
+        private JObject MakeRequest(IOEmbedBlock block, IOEmbedProvider provider)
+        {
+            var parametersDictionary = provider.GetQueryParameters();
+            var parametersString = string.Empty;
+            foreach (var parameter in parametersDictionary)
+            {
+                parametersString += '&' + parameter.Key + '=' + parameter.Value;
+            }
+            //TODO: vimeo requires format in endpoint
+            Uri uri = new Uri(provider.GetAPIEndpoint() + "?url=" + block.MediaUrl);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+            try
+            {
+                using (HttpWebResponse response = (HttpWebResponse) request.GetResponse())
+                using (Stream stream = response.GetResponseStream())
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    return JsonConvert.DeserializeObject<JObject>(reader.ReadToEnd());
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message);
+                return null;
+            }
         }
     }
 }

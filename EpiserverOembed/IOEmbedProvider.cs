@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 
 namespace Episerver.Oembed
@@ -6,7 +7,10 @@ namespace Episerver.Oembed
     {
         bool CanInterpretMediaUrl(string url);
 
-        JObject MakeRequest(IOEmbedBlock block);
+        string GetAPIEndpoint();
+
+        //Should return dictionary with these keys only: maxwidth, maxheight, format
+        IDictionary<string, string> GetQueryParameters();
 
     }
 }

@@ -326,7 +326,7 @@
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\StartPageController.cs" />
     <Compile Include="Controllers\VideoFileController.cs" />
-    <Compile Include="Controllers\YouTubeBlockController.cs" />
+    <Compile Include="Controllers\OEmbedBlockController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -343,7 +343,7 @@
     <Compile Include="Models\Blocks\SiteBlockData.cs" />
     <Compile Include="Models\Blocks\SiteLogotypeBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlock.cs" />
-    <Compile Include="Models\Blocks\YouTubeBlock.cs" />
+    <Compile Include="Models\Blocks\OEmbedBlock.cs" />
     <Compile Include="Models\Media\GenericMedia.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Media\VideoFile.cs" />
@@ -380,6 +380,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="StructureMapDependencyResolver.cs" />
     <Compile Include="StructureMapSetUp.cs" />
+    <Compile Include="VimeoOEmbedProvider.cs" />
     <Compile Include="YouTubeOEmbedProvider.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -458,7 +459,7 @@
     <Content Include="Views\TestingPage\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
-    <Content Include="Views\YouTubeBlock\Index.cshtml" />
+    <Content Include="Views\OEmbedBlock\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="App_Data\GeoLiteCity.dat" />
     <Content Include="App_Data\DefaultSiteContent.episerverdata" />
