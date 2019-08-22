@@ -22,7 +22,13 @@ namespace Episerver.Oembed
              jeśli tak to pozwalamy mu pociagnac EmbedResponse 
              i populujemy ThumbnailUrl i EmbedHtml.
              */
+            if (!(e.Content is IOEmbedBlock embedBlock))
+                return;
             
+            foreach (var provider in _providers)
+            {
+                provider.TryInterpretUrl();
+            }
         }
         
         public void Initialize(InitializationEngine context)

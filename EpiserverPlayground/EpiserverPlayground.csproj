@@ -342,6 +342,7 @@
     <Compile Include="Models\Blocks\SiteBlockData.cs" />
     <Compile Include="Models\Blocks\SiteLogotypeBlock.cs" />
     <Compile Include="Models\Blocks\TeaserBlock.cs" />
+    <Compile Include="Models\Blocks\YouTubeBlock.cs" />
     <Compile Include="Models\Media\GenericMedia.cs" />
     <Compile Include="Models\Media\ImageFile.cs" />
     <Compile Include="Models\Media\VideoFile.cs" />
@@ -358,6 +359,7 @@
     <Compile Include="Models\Pages\SitePageData.cs" />
     <Compile Include="Models\Pages\StandardPage.cs" />
     <Compile Include="Models\Pages\StartPage.cs" />
+    <Compile Include="Models\Pages\TestingPage.cs" />
     <Compile Include="Models\Properties\PropertyStringList.cs" />
     <Compile Include="Models\Register\RegisterViewModel.cs" />
     <Compile Include="Models\SiteContentType.cs" />
@@ -452,6 +454,7 @@
     <Content Include="Static\jwplayer\player.swf" />
     <Content Include="Static\jwplayer\preview.jpg" />
     <Content Include="Static\jwplayer\video.mp4" />
+    <Content Include="Views\TestingPage\Index.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
