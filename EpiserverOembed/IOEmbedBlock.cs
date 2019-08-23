@@ -1,6 +1,6 @@
 using EPiServer.Core;
 
-namespace Episerver.Oembed
+namespace EPiServer.Oembed
 {
     public interface IOEmbedBlock
     {

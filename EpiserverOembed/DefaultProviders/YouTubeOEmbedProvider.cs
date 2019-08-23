@@ -1,8 +1,6 @@
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Episerver.Oembed;
 
-namespace EpiserverPlayground
+namespace EPiServer.Oembed.DefaultProviders
 {
     public class YouTubeOEmbedProvider : IOEmbedProvider
     {

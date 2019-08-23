@@ -1,6 +1,6 @@
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
-using Episerver.Oembed;
+using EPiServer.Oembed;
 
 namespace EpiserverPlayground.Models.Blocks
 {
