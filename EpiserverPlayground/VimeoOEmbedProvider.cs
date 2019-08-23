@@ -12,15 +12,10 @@ namespace EpiserverPlayground
             return regex.IsMatch(url);
         }
 
-        public string GetAPIEndpoint()
+        public string GetRequestUrl(IOEmbedBlock block)
         {
-            return "https://vimeo.com/api/oembed.json";
+            return "https://vimeo.com/api/oembed.json?url=" + block.MediaUrl;
         }
 
-        public IDictionary<string, string> GetQueryParameters()
-        {
-            var dict = new Dictionary<string, string> {["format"] = "json"};
-            return dict;
-        }
     }
 }

@@ -12,14 +12,10 @@ namespace EpiserverPlayground
             return regex.IsMatch(url);
         }
 
-        public string GetAPIEndpoint()
+        public string GetRequestUrl(IOEmbedBlock block)
         {
-            return "https://www.youtube.com/oembed";
+            return "https://www.youtube.com/oembed?url=" + block.MediaUrl;
         }
         
-        public IDictionary<string, string> GetQueryParameters()
-        {
-            return new Dictionary<string, string>();
-        }
     }
 }

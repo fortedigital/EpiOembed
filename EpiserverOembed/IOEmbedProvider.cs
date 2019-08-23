@@ -7,10 +7,8 @@ namespace Episerver.Oembed
     {
         bool CanInterpretMediaUrl(string url);
 
-        string GetAPIEndpoint();
-
-        //Should return dictionary with these keys only: maxwidth, maxheight, format
-        IDictionary<string, string> GetQueryParameters();
+        string GetRequestUrl(IOEmbedBlock block);
+        
 
     }
 }

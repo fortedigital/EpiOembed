@@ -60,14 +60,8 @@ namespace Episerver.Oembed
         
         private JObject MakeRequest(IOEmbedBlock block, IOEmbedProvider provider)
         {
-            var parametersDictionary = provider.GetQueryParameters();
-            var parametersString = string.Empty;
-            foreach (var parameter in parametersDictionary)
-            {
-                parametersString += '&' + parameter.Key + '=' + parameter.Value;
-            }
-            //TODO: vimeo requires format in endpoint
-            Uri uri = new Uri(provider.GetAPIEndpoint() + "?url=" + block.MediaUrl);
+            
+            Uri uri = new Uri(provider.GetRequestUrl(block));
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
