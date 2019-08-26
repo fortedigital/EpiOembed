@@ -3,9 +3,6 @@ using System.Linq;
 using EPiServer.Core;
 using EPiServer.DataAccess;
 using EPiServer.Logging;
-using EPiServer.Oembed.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace EPiServer.Oembed
 {
@@ -41,22 +38,11 @@ namespace EPiServer.Oembed
             var uri = new Uri(foundProvider.GetRequestUrl(embedBlock));
             var response = WebRequestHandler.GetResponse(uri);
 
-            var settings = new JsonSerializerSettings {MissingMemberHandling = MissingMemberHandling.Ignore};
-            try
-            {
-                var deserializedObj = JsonConvert.DeserializeObject<ResponseObject>(response, settings);
-
-                if (deserializedObj == null)
-                    return;
-
-                embedBlock.EmbedResponse = response;
-                embedBlock.ThumbnailUrl = deserializedObj.thumbnail_url;
-                embedBlock.EmbedHtml = deserializedObj.html;
-            }
-            catch (Exception exception)
-            {
-                Logger.Error(exception.Message);
-            }
+            var deserializedObj = ResponseDeserializer.DeserializeResponse(response, foundProvider.FormatType);
+            
+            embedBlock.FullResponse = response;
+            embedBlock.ThumbnailUrl = deserializedObj.ThumbnailUrl;
+            embedBlock.EmbedHtml = new XhtmlString(deserializedObj.Html);
         }
     }
 }

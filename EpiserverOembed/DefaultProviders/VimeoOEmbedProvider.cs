@@ -1,10 +1,14 @@
 using System.Text.RegularExpressions;
+using EPiServer.Oembed.Models;
 
 namespace EPiServer.Oembed.DefaultProviders
 {
-    public class VimeoOEmbedProvider : IOEmbedProvider
+    public class VimeoOEmbedProvider : BaseOEmbedProvider
     {
-        public bool CanInterpretMediaUrl(string url)
+        public VimeoOEmbedProvider(int? maxWidth = null, int? maxHeight = null, FormatType formatType = FormatType.json) 
+            : base(maxWidth, maxHeight, formatType){ }
+        
+        public override bool CanInterpretMediaUrl(string url)
         {
             var regex = new Regex("(https://vimeo\\.com/.*)|(https://vimeo\\.com/album/.*/video/.*)|" +
                                   "(https://vimeo\\.com/channels/.*/.*)|(https://vimeo\\.com/groups/.*/videos/.*)|" +
@@ -12,9 +16,11 @@ namespace EPiServer.Oembed.DefaultProviders
             return regex.IsMatch(url);
         }
 
-        public string GetRequestUrl(IOEmbedBlock block)
+        public override string GetRequestUrl(IOEmbedBlock block)
         {
-            return "https://vimeo.com/api/oembed.json?url=" + block.MediaUrl;
+            var url = "https://vimeo.com/api/oembed." + FormatType + "?url=" + block.MediaUrl;
+            url += base.GetRequestUrl(block);
+            return url;
         }
 
     }

@@ -8,9 +8,12 @@ using EPiServer.Shell;
 namespace EPiServer.Oembed
 {
     
-    //TODO: format, maxwidth, maxheight in providers
-    //TODO: use different deserializers for json/xml
-
+    //TODO: clear fields on null mediaUrl?
+    
+    //Testing urls:
+    //https://www.youtube.com/watch?v=iwGFalTRHDA
+    //https://vimeo.com/76979871
+    
     [ModuleDependency(typeof(ShellInitialization))]
     [InitializableModule]
     public class OEmbedModule : IInitializableModule

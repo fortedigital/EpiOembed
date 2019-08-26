@@ -1,36 +1,66 @@
-using EPiServer.Core;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace EPiServer.Oembed.Models
 {
+    [XmlRoot(ElementName = "oembed")]
     public class ResponseObject
     {
         
-        public ResponseType type { get; set; }
+        [XmlElement(ElementName = "type")]
+        [JsonProperty(PropertyName = "type")]
+        public ResponseType Type { get; set; }
 
-        public string version { get; set; }
+        [XmlElement(ElementName = "version")]
+        [JsonProperty(PropertyName = "version")]
+        public string Version { get; set; }
 
-        public string title { get; set; }
+        [XmlElement(ElementName = "title")]
+        [JsonProperty(PropertyName = "title")]
+        public string Title { get; set; }
+        
+        [XmlElement(ElementName = "author_name")]
+        [JsonProperty(PropertyName = "author_name")]
+        public string AuthorName { get; set; }
+        
+        [XmlElement(ElementName = "author_url")]
+        [JsonProperty(PropertyName = "author_url")]
+        public string AuthorUrl { get; set; }
+        
+        [XmlElement(ElementName = "provider_name")]
+        [JsonProperty(PropertyName = "provider_name")]
+        public string ProviderName { get; set; }
 
-        public string author_name { get; set; }
+        [XmlElement(ElementName = "provider_url")]
+        [JsonProperty(PropertyName = "provider_url")]
+        public string ProviderUrl { get; set; }
 
-        public string author_url { get; set; }
+        [XmlElement(ElementName = "cache_age")]
+        [JsonProperty(PropertyName = "cache_age")]
+        public int CacheAge { get; set; }
 
-        public string provider_name { get; set; }
+        [XmlElement(ElementName = "thumbnail_url")]
+        [JsonProperty(PropertyName = "thumbnail_url")]
+        public string ThumbnailUrl { get; set; }
 
-        public string provider_url { get; set; }
+        [XmlElement(ElementName = "thumbnail_width")]
+        [JsonProperty(PropertyName = "thumbnail_width")]
+        public int ThumbnailWidth { get; set; }
 
-        public int cache_age { get; set; }
+        [XmlElement(ElementName = "thumbnail_height")]
+        [JsonProperty(PropertyName = "thumbnail_height")]
+        public int ThumbnailHeight { get; set; }
 
-        public string thumbnail_url { get; set; }
+        [XmlElement(ElementName = "html")]
+        [JsonProperty(PropertyName = "html")]
+        public string Html { get; set; }
 
-        public int thumbnail_width { get; set; }
+        [XmlElement(ElementName = "width")]
+        [JsonProperty(PropertyName = "width")]
+        public int Width { get; set; }
 
-        public int thumbnail_height { get; set; }
-
-        public XhtmlString html { get; set; }
-
-        public int width { get; set; }
-
-        public int height { get; set; }
+        [XmlElement(ElementName = "height")]
+        [JsonProperty(PropertyName = "height")]
+        public int Height { get; set; }
     }
 }

@@ -2,6 +2,7 @@ using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.Oembed;
 using EPiServer.Oembed.DefaultProviders;
+using EPiServer.Oembed.Models;
 using EPiServer.ServiceLocation;
 
 namespace EpiserverPlayground
@@ -13,8 +14,8 @@ namespace EpiserverPlayground
         
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            context.Services.AddSingleton<IOEmbedProvider, YouTubeOEmbedProvider>();
-            context.Services.AddSingleton<IOEmbedProvider, VimeoOEmbedProvider>();
+            context.Services.AddSingleton<IOEmbedProvider>(locator => new YouTubeOEmbedProvider());
+            context.Services.AddSingleton<IOEmbedProvider>(locator => new VimeoOEmbedProvider(formatType: FormatType.xml));
         }
 
         public void Initialize(InitializationEngine context)

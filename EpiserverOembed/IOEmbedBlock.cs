@@ -1,4 +1,5 @@
 using EPiServer.Core;
+using EPiServer.Oembed.Models;
 
 namespace EPiServer.Oembed
 {
@@ -10,6 +11,6 @@ namespace EPiServer.Oembed
 
         XhtmlString EmbedHtml { get; set; }
 
-        string EmbedResponse { get; set; }
+        string FullResponse { get; set; }
     }
 }
