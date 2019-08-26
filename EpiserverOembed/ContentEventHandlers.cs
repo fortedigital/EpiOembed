@@ -51,7 +51,7 @@ namespace EPiServer.Oembed
             embedBlock.EmbedHtml = new XhtmlString(deserializedObj.Html);
         }
 
-        private void ClearBlockProperties(IOEmbedBlock block)
+        private static void ClearBlockProperties(IOEmbedBlock block)
         {
             block.FullResponse = null;
             block.ThumbnailUrl = null;

@@ -10,8 +10,8 @@ namespace EPiServer.Oembed.DefaultProviders
         
         public override bool CanInterpretMediaUrl(string url)
         {
-            var regex = new Regex("(https://.*\\.youtube\\.com/watch.*)|(https://.*\\.youtube\\.com/v/.*)|(https://youtu\\.be/.*)");
-            return regex.IsMatch(url);
+            const string pattern = @"(^https://.*\\.youtube\\.com/watch.*)|(^https://.*\\.youtube\\.com/v/.*)|(^https://youtu\\.be/.*)";
+            return Regex.IsMatch(url, pattern);
         }
 
         public override string GetRequestUrl(IOEmbedBlock block)

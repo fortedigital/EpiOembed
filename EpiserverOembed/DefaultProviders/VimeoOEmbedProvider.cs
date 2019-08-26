@@ -10,10 +10,10 @@ namespace EPiServer.Oembed.DefaultProviders
         
         public override bool CanInterpretMediaUrl(string url)
         {
-            var regex = new Regex("(https://vimeo\\.com/.*)|(https://vimeo\\.com/album/.*/video/.*)|" +
-                                  "(https://vimeo\\.com/channels/.*/.*)|(https://vimeo\\.com/groups/.*/videos/.*)|" +
-                                  "(https://vimeo\\.com/ondemand/.*/.*)|(https://player\\.vimeo\\.com/video/.*)");
-            return regex.IsMatch(url);
+            const string pattern = @"(^https://vimeo\\.com/.*)|(^https://vimeo\\.com/album/.*/video/.*)|" +
+                                   "(^https://vimeo\\.com/channels/.*/.*)|(^https://vimeo\\.com/groups/.*/videos/.*)|" +
+                                   "(^https://vimeo\\.com/ondemand/.*/.*)|(^https://player\\.vimeo\\.com/video/.*)";
+            return Regex.IsMatch(url, pattern);
         }
 
         public override string GetRequestUrl(IOEmbedBlock block)
