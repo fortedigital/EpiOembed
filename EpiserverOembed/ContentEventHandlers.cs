@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using EPiServer.Core;
 using EPiServer.DataAccess;
+using EPiServer.Logging;
+using EPiServer.Oembed.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -9,6 +11,7 @@ namespace EPiServer.Oembed
 {
     public class ContentEventHandlers
     {
+        private static readonly ILogger Logger = LogManager.GetLogger();
         private readonly IOEmbedProvider[] _providers;
 
         public ContentEventHandlers(IOEmbedProvider[] providers)
@@ -37,13 +40,23 @@ namespace EPiServer.Oembed
             
             var uri = new Uri(foundProvider.GetRequestUrl(embedBlock));
             var response = WebRequestHandler.GetResponse(uri);
-            var json = JsonConvert.DeserializeObject<JObject>(response);
-            if(json == null)
-                return;
 
-            embedBlock.EmbedResponse = json.ToString();
-            embedBlock.ThumbnailUrl = json["thumbnail_url"]?.ToString();
-            embedBlock.EmbedHtml = new XhtmlString(json["html"]?.ToString());
+            var settings = new JsonSerializerSettings {MissingMemberHandling = MissingMemberHandling.Ignore};
+            try
+            {
+                var deserializedObj = JsonConvert.DeserializeObject<ResponseObject>(response, settings);
+
+                if (deserializedObj == null)
+                    return;
+
+                embedBlock.EmbedResponse = response;
+                embedBlock.ThumbnailUrl = deserializedObj.thumbnail_url;
+                embedBlock.EmbedHtml = deserializedObj.html;
+            }
+            catch (Exception exception)
+            {
+                Logger.Error(exception.Message);
+            }
         }
     }
 }

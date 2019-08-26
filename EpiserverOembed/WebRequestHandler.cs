@@ -13,7 +13,7 @@ namespace EPiServer.Oembed
             WebClient client = new WebClient();
             try
             {
-                var response = client.DownloadStringTaskAsync(uri).Result;
+                var response = client.DownloadString(uri);
                 return response;
             }
             catch (Exception exception)

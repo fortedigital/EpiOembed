@@ -13,10 +13,8 @@ namespace EpiserverPlayground
         
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-
-            context.Services.Add<IOEmbedProvider>(f => new YouTubeOEmbedProvider(), ServiceInstanceScope.Transient);
-            context.Services.Add<IOEmbedProvider>(f => new VimeoOEmbedProvider(), ServiceInstanceScope.Transient);
-
+            context.Services.AddSingleton<IOEmbedProvider, YouTubeOEmbedProvider>();
+            context.Services.AddSingleton<IOEmbedProvider, VimeoOEmbedProvider>();
         }
 
         public void Initialize(InitializationEngine context)

@@ -10,9 +10,7 @@ namespace EPiServer.Oembed
     
     //TODO: format, maxwidth, maxheight in providers
     //TODO: use different deserializers for json/xml
-    //TODO: deserialize to own object
-    
-    
+
     [ModuleDependency(typeof(ShellInitialization))]
     [InitializableModule]
     public class OEmbedModule : IInitializableModule
