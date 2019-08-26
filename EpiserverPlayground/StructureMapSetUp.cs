@@ -1,9 +1,9 @@
-using System.Web.Mvc;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
-using Episerver.Oembed;
+using EPiServer.Oembed;
+using EPiServer.Oembed.DefaultProviders;
+using EPiServer.Oembed.Models;
 using EPiServer.ServiceLocation;
-using StructureMap;
 
 namespace EpiserverPlayground
 {
@@ -11,11 +11,11 @@ namespace EpiserverPlayground
     [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
     public class StructureMapSetUp : IConfigurableModule
     {
+        
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-
-            context.Services.Add<IOEmbedProvider>(f => new YouTubeOEmbedProvider(), ServiceInstanceScope.Transient);
-            context.Services.Add<IOEmbedProvider>(f => new VimeoOEmbedProvider(), ServiceInstanceScope.Transient);
+            context.Services.AddSingleton<IOEmbedProvider>(locator => new YouTubeOEmbedProvider());
+            context.Services.AddSingleton<IOEmbedProvider>(locator => new VimeoOEmbedProvider(formatType: FormatType.xml));
         }
         
         public void Initialize(InitializationEngine context)

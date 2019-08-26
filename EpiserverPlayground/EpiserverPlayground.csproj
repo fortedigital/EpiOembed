@@ -380,8 +380,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="StructureMapDependencyResolver.cs" />
     <Compile Include="StructureMapSetUp.cs" />
-    <Compile Include="VimeoOEmbedProvider.cs" />
-    <Compile Include="YouTubeOEmbedProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EpiserverOembed\EpiserverOembed.csproj">

@@ -1,6 +1,7 @@
 using EPiServer.Core;
+using EPiServer.Oembed.Models;
 
-namespace Episerver.Oembed
+namespace EPiServer.Oembed
 {
     public interface IOEmbedBlock
     {
@@ -10,6 +11,6 @@ namespace Episerver.Oembed
 
         XhtmlString EmbedHtml { get; set; }
 
-        string EmbedResponse { get; set; }
+        string FullResponse { get; set; }
     }
 }

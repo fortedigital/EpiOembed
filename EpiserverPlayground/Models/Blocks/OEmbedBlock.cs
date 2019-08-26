@@ -1,6 +1,5 @@
 using EPiServer.Core;
-using EPiServer.DataAbstraction;
-using Episerver.Oembed;
+using EPiServer.Oembed;
 
 namespace EpiserverPlayground.Models.Blocks
 {
@@ -14,12 +13,7 @@ namespace EpiserverPlayground.Models.Blocks
         
         public virtual XhtmlString EmbedHtml { get; set; }
         
-        public virtual string EmbedResponse { get; set; }
+        public virtual string FullResponse { get; set; }
 
-        public override void SetDefaultValues(ContentType contentType)
-        {
-            base.SetDefaultValues(contentType);
-            //MediaUrl = @"https://www.youtube.com/oembed?url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DiwGFalTRHDA";
-        }
     }
 }
