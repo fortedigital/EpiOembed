@@ -8,7 +8,7 @@ using EPiServer.Shell;
 namespace EPiServer.Oembed
 {
     
-    //TODO: clear fields on null mediaUrl?
+    //TODO: select provider instead of firstOrDefault
     
     //Testing urls:
     //https://www.youtube.com/watch?v=iwGFalTRHDA

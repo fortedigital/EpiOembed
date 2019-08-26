@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
+using EPiServer.Find.Helpers.Text;
 using EPiServer.Logging;
 using EPiServer.Oembed.Models;
 using Newtonsoft.Json;
@@ -14,6 +15,9 @@ namespace EPiServer.Oembed
 
         public static ResponseObject DeserializeResponse(string response, FormatType format)
         {
+            if (response.IsNullOrWhiteSpace())
+                return null;
+            
             try
             {
                 ResponseObject deserializedObj;

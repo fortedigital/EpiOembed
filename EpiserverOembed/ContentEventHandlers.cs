@@ -27,10 +27,13 @@ namespace EPiServer.Oembed
             var action = se.Action & SaveAction.ActionMask;
             if (action != SaveAction.Save)
                 return;
-            
-            if (embedBlock.MediaUrl == null)
+
+            if (string.IsNullOrWhiteSpace(embedBlock.MediaUrl))
+            {
+                ClearBlockProperties(embedBlock);
                 return;
-            
+            }
+
             var foundProvider = _providers.FirstOrDefault(x => x.CanInterpretMediaUrl(embedBlock.MediaUrl));
             if(foundProvider == null)
                 return;
@@ -39,10 +42,20 @@ namespace EPiServer.Oembed
             var response = WebRequestHandler.GetResponse(uri);
 
             var deserializedObj = ResponseDeserializer.DeserializeResponse(response, foundProvider.FormatType);
+
+            if (deserializedObj == null)
+                return;
             
             embedBlock.FullResponse = response;
             embedBlock.ThumbnailUrl = deserializedObj.ThumbnailUrl;
             embedBlock.EmbedHtml = new XhtmlString(deserializedObj.Html);
+        }
+
+        private void ClearBlockProperties(IOEmbedBlock block)
+        {
+            block.FullResponse = null;
+            block.ThumbnailUrl = null;
+            block.EmbedHtml = null;
         }
     }
 }
