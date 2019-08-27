@@ -7,8 +7,8 @@
         <ProjectGuid>{EE607FD4-A785-4829-9DF3-38A4B608B713}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>EpiserverOembed</RootNamespace>
-        <AssemblyName>EpiserverOembed</AssemblyName>
+        <RootNamespace>EPiServer.Oembed</RootNamespace>
+        <AssemblyName>EPiServer.Oembed</AssemblyName>
         <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>
@@ -41,9 +41,6 @@
         <Reference Include="EPiServer.Events, Version=11.11.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7">
           <HintPath>..\packages\EPiServer.Framework.11.11.3\lib\net461\EPiServer.Events.dll</HintPath>
         </Reference>
-        <Reference Include="EPiServer.Find, Version=13.0.5.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7">
-          <HintPath>..\packages\EPiServer.Find.13.0.5\lib\net461\EPiServer.Find.dll</HintPath>
-        </Reference>
         <Reference Include="EPiServer.Framework, Version=11.11.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7">
           <HintPath>..\packages\EPiServer.Framework.11.11.3\lib\net461\EPiServer.Framework.dll</HintPath>
         </Reference>
@@ -56,7 +53,6 @@
         <Reference Include="EPiServer.Shell, Version=11.19.1.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7">
           <HintPath>..\packages\EPiServer.CMS.UI.Core.11.19.1\lib\net461\EPiServer.Shell.dll</HintPath>
         </Reference>
-        <Reference Include="Microsoft.CSharp" />
         <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
           <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
         </Reference>

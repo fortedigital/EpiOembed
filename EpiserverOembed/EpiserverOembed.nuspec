@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EPiServer.OEmbed</id>
+    <version>1.0.0</version>
+	<title>EPiServer.OEmbed</title>
+    <authors>Forte_ Digital</authors>
+    <projectUrl>https://github.com/fortedigital/EpiOembed</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Embedding module for EPiServer using OEmbed standard</description>
+    <copyright>Copyright 2019</copyright>
+    <dependencies>
+      <dependency id="EPiServer.CMS.Core" version="[11.11.2, 12)" />
+	  <dependency id="EPiServer.Framework" version="[11.11.2, 12)" />
+	  <dependency id="EPiServer.CMS.UI.Core" version="[11.11.2, 12)" />
+	  <dependency id="EPiServer.Framework.AspNet" version="[11.11.2, 12)" />
+	  <dependency id="Newtonsoft.Json" version="10.0.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+	<file src="bin/Release/EPiServer.Oembed.dll" target="lib\net462" />
+  </files>
+</package>

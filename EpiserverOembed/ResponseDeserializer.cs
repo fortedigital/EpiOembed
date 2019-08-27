@@ -1,5 +1,4 @@
 using System;
-using EPiServer.Find.Helpers.Text;
 using EPiServer.Logging;
 using EPiServer.Oembed.Models;
 using Newtonsoft.Json;
@@ -12,7 +11,7 @@ namespace EPiServer.Oembed
 
         public static ResponseObject DeserializeResponse(string response)
         {
-            if (response.IsNullOrWhiteSpace())
+            if (string.IsNullOrWhiteSpace(response))
                 return null;
             
             try
