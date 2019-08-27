@@ -17,11 +17,13 @@
 	}
 ```
 
-2. Create block using IOEmbedBlock interface
+2. Create block using IOEmbedBlock interface (or BaseOEmbedBlock class)
 
 ```csharp
 	public class OEmbedBlock : BlockData, IOEmbedBlock{...}
 ```
+
+If you're using interface then add [BackingType(typeof(PropertyResponseObject))] attribute to Response property
 
 ## Usage:
 
