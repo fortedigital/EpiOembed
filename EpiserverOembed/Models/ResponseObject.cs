@@ -1,66 +1,73 @@
-using System.Xml.Serialization;
 using Newtonsoft.Json;
 
 namespace EPiServer.Oembed.Models
 {
-    [XmlRoot(ElementName = "oembed")]
+
     public class ResponseObject
     {
         
-        [XmlElement(ElementName = "type")]
         [JsonProperty(PropertyName = "type")]
         public ResponseType Type { get; set; }
 
-        [XmlElement(ElementName = "version")]
-        [JsonProperty(PropertyName = "version")]
-        public string Version { get; set; }
-
-        [XmlElement(ElementName = "title")]
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
-        
-        [XmlElement(ElementName = "author_name")]
-        [JsonProperty(PropertyName = "author_name")]
-        public string AuthorName { get; set; }
-        
-        [XmlElement(ElementName = "author_url")]
-        [JsonProperty(PropertyName = "author_url")]
-        public string AuthorUrl { get; set; }
-        
-        [XmlElement(ElementName = "provider_name")]
-        [JsonProperty(PropertyName = "provider_name")]
-        public string ProviderName { get; set; }
 
-        [XmlElement(ElementName = "provider_url")]
-        [JsonProperty(PropertyName = "provider_url")]
-        public string ProviderUrl { get; set; }
-
-        [XmlElement(ElementName = "cache_age")]
-        [JsonProperty(PropertyName = "cache_age")]
-        public int CacheAge { get; set; }
-
-        [XmlElement(ElementName = "thumbnail_url")]
         [JsonProperty(PropertyName = "thumbnail_url")]
         public string ThumbnailUrl { get; set; }
 
-        [XmlElement(ElementName = "thumbnail_width")]
         [JsonProperty(PropertyName = "thumbnail_width")]
         public int ThumbnailWidth { get; set; }
 
-        [XmlElement(ElementName = "thumbnail_height")]
         [JsonProperty(PropertyName = "thumbnail_height")]
         public int ThumbnailHeight { get; set; }
 
-        [XmlElement(ElementName = "html")]
         [JsonProperty(PropertyName = "html")]
         public string Html { get; set; }
 
-        [XmlElement(ElementName = "width")]
         [JsonProperty(PropertyName = "width")]
         public int Width { get; set; }
 
-        [XmlElement(ElementName = "height")]
         [JsonProperty(PropertyName = "height")]
         public int Height { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType()) return false;
+            ResponseObject resp = (ResponseObject) obj;
+            var equality = Type == resp.Type &&
+                           Title == resp.Title &&
+                           ThumbnailUrl == resp.ThumbnailUrl &&
+                           ThumbnailHeight == resp.ThumbnailHeight &&
+                           ThumbnailWidth == resp.ThumbnailWidth &&
+                           Html == resp.Html &&
+                           Width == resp.Width && Height == resp.Height;
+            return equality;   
+        }
+
+        protected bool Equals(ResponseObject other)
+        {
+            return Type == other.Type && string.Equals(Title, other.Title) && 
+                   string.Equals(ThumbnailUrl, other.ThumbnailUrl) && 
+                   ThumbnailWidth == other.ThumbnailWidth && 
+                   ThumbnailHeight == other.ThumbnailHeight && 
+                   string.Equals(Html, other.Html) && 
+                   Width == other.Width && Height == other.Height;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (int) Type;
+                hashCode = (hashCode * 397) ^ (Title != null ? Title.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ThumbnailUrl != null ? ThumbnailUrl.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ ThumbnailWidth;
+                hashCode = (hashCode * 397) ^ ThumbnailHeight;
+                hashCode = (hashCode * 397) ^ (Html != null ? Html.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Width;
+                hashCode = (hashCode * 397) ^ Height;
+                return hashCode;
+            }
+        }
     }
 }

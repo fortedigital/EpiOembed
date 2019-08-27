@@ -1,9 +1,8 @@
 using EPiServer.Core;
-using EPiServer.Oembed.Models;
 
 namespace EPiServer.Oembed
 {
-    public interface IOEmbedBlock
+    public interface IOEmbedBlock : IContentData
     {
         string MediaUrl { get; set; }
 

@@ -8,11 +8,10 @@ using EPiServer.Shell;
 namespace EPiServer.Oembed
 {
     
-    //TODO: clear fields on null mediaUrl?
-    
     //Testing urls:
     //https://www.youtube.com/watch?v=iwGFalTRHDA
     //https://vimeo.com/76979871
+    //http://instagram.com/p/V8UMy0LjpX/
     
     [ModuleDependency(typeof(ShellInitialization))]
     [InitializableModule]

@@ -10,6 +10,9 @@ namespace EPiServer.Oembed
         
         public static string GetResponse(Uri uri)
         {
+            if(uri == null)
+                return null;
+            
             WebClient client = new WebClient();
             try
             {

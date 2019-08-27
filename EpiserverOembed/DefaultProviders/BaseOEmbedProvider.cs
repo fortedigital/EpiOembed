@@ -1,4 +1,4 @@
-using EPiServer.Oembed.Models;
+using System.Text.RegularExpressions;
 
 namespace EPiServer.Oembed.DefaultProviders
 {
@@ -6,18 +6,17 @@ namespace EPiServer.Oembed.DefaultProviders
     {
         public int? MaxWidth { get; set; }
         public int? MaxHeight { get; set; }
-        public FormatType FormatType { get; set; }
-        
-        public BaseOEmbedProvider(int? maxWidth = null, int? maxHeight = null, FormatType formatType = FormatType.json)
+        public string UrlSchemePattern { get; set; }
+
+        public BaseOEmbedProvider(int? maxWidth= null, int? maxHeight = null)
         {
             MaxWidth = maxWidth;
             MaxHeight = maxHeight;
-            FormatType = formatType;
         }
         
         public virtual bool CanInterpretMediaUrl(string url)
         {
-            return false;
+            return Regex.IsMatch(url, UrlSchemePattern);
         }
 
         public virtual string GetRequestUrl(IOEmbedBlock block)

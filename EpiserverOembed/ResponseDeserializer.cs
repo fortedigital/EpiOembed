@@ -1,7 +1,5 @@
 using System;
-using System.IO;
-using System.Text;
-using System.Xml.Serialization;
+using EPiServer.Find.Helpers.Text;
 using EPiServer.Logging;
 using EPiServer.Oembed.Models;
 using Newtonsoft.Json;
@@ -12,22 +10,17 @@ namespace EPiServer.Oembed
     {
         private static readonly ILogger Logger = LogManager.GetLogger();
 
-        public static ResponseObject DeserializeResponse(string response, FormatType format)
+        public static ResponseObject DeserializeResponse(string response)
         {
+            if (response.IsNullOrWhiteSpace())
+                return null;
+            
             try
             {
                 ResponseObject deserializedObj;
-                if (format == FormatType.json)
-                {
-                    var settings = new JsonSerializerSettings {MissingMemberHandling = MissingMemberHandling.Ignore};
-                    deserializedObj = JsonConvert.DeserializeObject<ResponseObject>(response, settings);
-                }
-                else
-                {
-                    var serializer = new XmlSerializer(typeof(ResponseObject));
-                    var stream = new MemoryStream(Encoding.UTF8.GetBytes(response));
-                    deserializedObj = (ResponseObject) serializer.Deserialize(stream);
-                }
+                var settings = new JsonSerializerSettings {MissingMemberHandling = MissingMemberHandling.Ignore, 
+                    NullValueHandling = NullValueHandling.Ignore};
+                deserializedObj = JsonConvert.DeserializeObject<ResponseObject>(response, settings);
                 return deserializedObj;
             }
             catch (Exception exception)
