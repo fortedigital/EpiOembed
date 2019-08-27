@@ -6,9 +6,9 @@ namespace EPiServer.Oembed.DefaultProviders
     {
         public int? MaxWidth { get; set; }
         public int? MaxHeight { get; set; }
-        public string UrlSchemePattern { get; set; }
+        protected string UrlSchemePattern { get; set; }
 
-        public BaseOEmbedProvider(int? maxWidth= null, int? maxHeight = null)
+        protected BaseOEmbedProvider(int? maxWidth= null, int? maxHeight = null)
         {
             MaxWidth = maxWidth;
             MaxHeight = maxHeight;

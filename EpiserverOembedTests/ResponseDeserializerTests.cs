@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Xml.Serialization;
 using EPiServer.Oembed;
 using EPiServer.Oembed.DefaultProviders;
 using EPiServer.Oembed.Models;
-using Newtonsoft.Json;
 using NUnit.Framework;
 
 namespace EpiserverOembedTests
