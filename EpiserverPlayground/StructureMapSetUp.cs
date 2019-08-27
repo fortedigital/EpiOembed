@@ -16,6 +16,7 @@ namespace EpiserverPlayground
         {
             context.Services.AddSingleton<IOEmbedProvider>(locator => new YouTubeOEmbedProvider());
             context.Services.AddSingleton<IOEmbedProvider>(locator => new VimeoOEmbedProvider(formatType: FormatType.xml));
+            context.Services.AddSingleton<IOEmbedProvider>(locator => new InstagramOEmbedProvider());
         }
 
         public void Initialize(InitializationEngine context)

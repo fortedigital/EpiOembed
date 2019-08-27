@@ -5,15 +5,12 @@ namespace EPiServer.Oembed.DefaultProviders
 {
     public class VimeoOEmbedProvider : BaseOEmbedProvider
     {
-        public VimeoOEmbedProvider(int? maxWidth = null, int? maxHeight = null, FormatType formatType = FormatType.json) 
-            : base(maxWidth, maxHeight, formatType){ }
-        
-        public override bool CanInterpretMediaUrl(string url)
+        public VimeoOEmbedProvider(int? maxWidth = null, int? maxHeight = null, FormatType formatType = FormatType.json)
+            : base(maxWidth: maxWidth, maxHeight: maxHeight, formatType: formatType)
         {
-            const string pattern = @"(^https://vimeo\\.com/.*)|(^https://vimeo\\.com/album/.*/video/.*)|" +
-                                   "(^https://vimeo\\.com/channels/.*/.*)|(^https://vimeo\\.com/groups/.*/videos/.*)|" +
-                                   "(^https://vimeo\\.com/ondemand/.*/.*)|(^https://player\\.vimeo\\.com/video/.*)";
-            return Regex.IsMatch(url, pattern);
+            UrlSchemePattern = @"^(https://vimeo\.com/.*)|(https://vimeo\.com/album/.*/video/.*)|" +
+                               @"(https://vimeo\.com/channels/.*/.*)|(https://vimeo\.com/groups/.*/videos/.*)|" +
+                               @"(https://vimeo\.com/ondemand/.*/.*)|(https://player\.vimeo\.com/video/.*)";
         }
 
         public override string GetRequestUrl(IOEmbedBlock block)

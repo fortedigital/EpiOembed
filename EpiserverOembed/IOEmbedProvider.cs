@@ -7,8 +7,8 @@ namespace EPiServer.Oembed
         int? MaxWidth { get; set; }
         int? MaxHeight { get; set; }
         FormatType FormatType { get; set; }
-        
-        
+        string UrlSchemePattern { get; set; }
+
         bool CanInterpretMediaUrl(string url);
 
         string GetRequestUrl(IOEmbedBlock block);

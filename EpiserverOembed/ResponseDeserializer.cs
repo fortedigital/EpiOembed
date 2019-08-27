@@ -23,7 +23,8 @@ namespace EPiServer.Oembed
                 ResponseObject deserializedObj;
                 if (format == FormatType.json)
                 {
-                    var settings = new JsonSerializerSettings {MissingMemberHandling = MissingMemberHandling.Ignore};
+                    var settings = new JsonSerializerSettings {MissingMemberHandling = MissingMemberHandling.Ignore, 
+                        NullValueHandling = NullValueHandling.Ignore};
                     deserializedObj = JsonConvert.DeserializeObject<ResponseObject>(response, settings);
                 }
                 else
