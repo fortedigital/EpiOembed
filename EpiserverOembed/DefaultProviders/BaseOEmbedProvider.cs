@@ -1,5 +1,4 @@
 using System.Text.RegularExpressions;
-using EPiServer.Oembed.Models;
 
 namespace EPiServer.Oembed.DefaultProviders
 {
@@ -7,14 +6,12 @@ namespace EPiServer.Oembed.DefaultProviders
     {
         public int? MaxWidth { get; set; }
         public int? MaxHeight { get; set; }
-        public FormatType FormatType { get; set; }
         public string UrlSchemePattern { get; set; }
 
-        public BaseOEmbedProvider(int? maxWidth= null, int? maxHeight = null, FormatType formatType = FormatType.json)
+        public BaseOEmbedProvider(int? maxWidth= null, int? maxHeight = null)
         {
             MaxWidth = maxWidth;
             MaxHeight = maxHeight;
-            FormatType = formatType;
         }
         
         public virtual bool CanInterpretMediaUrl(string url)

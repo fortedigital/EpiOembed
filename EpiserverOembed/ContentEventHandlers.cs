@@ -2,13 +2,11 @@ using System;
 using System.Linq;
 using EPiServer.Core;
 using EPiServer.DataAccess;
-using EPiServer.Logging;
 
 namespace EPiServer.Oembed
 {
     public class ContentEventHandlers
     {
-        private static readonly ILogger Logger = LogManager.GetLogger();
         private readonly IOEmbedProvider[] _providers;
 
         public ContentEventHandlers(IOEmbedProvider[] providers)
@@ -41,7 +39,7 @@ namespace EPiServer.Oembed
             var uri = new Uri(foundProvider.GetRequestUrl(embedBlock));
             var response = WebRequestHandler.GetResponse(uri);
 
-            var deserializedObj = ResponseDeserializer.DeserializeResponse(response, foundProvider.FormatType);
+            var deserializedObj = ResponseDeserializer.DeserializeResponse(response);
 
             if (deserializedObj == null)
                 return;

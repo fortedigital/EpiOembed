@@ -8,8 +8,6 @@ using EPiServer.Shell;
 namespace EPiServer.Oembed
 {
     
-    //TODO: select provider instead of firstOrDefault
-    
     //Testing urls:
     //https://www.youtube.com/watch?v=iwGFalTRHDA
     //https://vimeo.com/76979871

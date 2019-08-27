@@ -1,12 +1,9 @@
-using System.Text.RegularExpressions;
-using EPiServer.Oembed.Models;
-
 namespace EPiServer.Oembed.DefaultProviders
 {
     public class VimeoOEmbedProvider : BaseOEmbedProvider
     {
-        public VimeoOEmbedProvider(int? maxWidth = null, int? maxHeight = null, FormatType formatType = FormatType.json)
-            : base(maxWidth: maxWidth, maxHeight: maxHeight, formatType: formatType)
+        public VimeoOEmbedProvider(int? maxWidth = null, int? maxHeight = null)
+            : base(maxWidth: maxWidth, maxHeight: maxHeight)
         {
             UrlSchemePattern = @"^(https://vimeo\.com/.*)|(https://vimeo\.com/album/.*/video/.*)|" +
                                @"(https://vimeo\.com/channels/.*/.*)|(https://vimeo\.com/groups/.*/videos/.*)|" +
@@ -15,7 +12,7 @@ namespace EPiServer.Oembed.DefaultProviders
 
         public override string GetRequestUrl(IOEmbedBlock block)
         {
-            var url = "https://vimeo.com/api/oembed." + FormatType + "?url=" + block.MediaUrl;
+            var url = "https://vimeo.com/api/oembed.json?url=" + block.MediaUrl;
             url += base.GetRequestUrl(block);
             return url;
         }

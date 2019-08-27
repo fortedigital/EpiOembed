@@ -16,7 +16,7 @@ namespace EpiserverOembedTests
         [Test]
         public void NullResponseTest()
         {
-            var obj = ResponseDeserializer.DeserializeResponse(null, FormatType.json);
+            var obj = ResponseDeserializer.DeserializeResponse(null);
             
             Assert.IsNull(obj);
         }
@@ -27,7 +27,7 @@ namespace EpiserverOembedTests
             var response = "{\"type\": \"video\", \"title\": \"TestTitle\", \"thumbnail_url\": \"TestThumbnailUrl\"," +
                            "\"thumbnail_width\": 640, \"thumbnail_height\": 480, \"html\": \"TestHtml\", \"width\": 800, \"height\": 600}";
 
-            var actual = ResponseDeserializer.DeserializeResponse(response, FormatType.json);
+            var actual = ResponseDeserializer.DeserializeResponse(response);
             
             Assert.True(FullObject.Equals(actual));
         }
@@ -37,7 +37,7 @@ namespace EpiserverOembedTests
         {
             var response = "{\"type\": \"video\",\"html\": \"TestHtml\"}";
 
-            var actual = ResponseDeserializer.DeserializeResponse(response, FormatType.json);
+            var actual = ResponseDeserializer.DeserializeResponse(response);
             
             Assert.True(MissingPropertiesObject.Equals(actual));
         }
@@ -48,45 +48,11 @@ namespace EpiserverOembedTests
             var response = "{\"type\": \"video\", \"title\": \"TestTitle\", \"thumbnail_url\": \"TestThumbnailUrl\", \"additional\": \"Test\"," +
                            "\"thumbnail_width\": 640, \"thumbnail_height\": 480, \"html\": \"TestHtml\", \"width\": 800, \"height\": 600}";
 
-            var actual = ResponseDeserializer.DeserializeResponse(response, FormatType.json);
-            
-            Assert.True(FullObject.Equals(actual));
-        }
-        
-        [Test]
-        public void ProviderDeserializationTestWithFullObjectXml()
-        {
-            var response = @"<oembed><type>video</type><title>TestTitle</title><thumbnail_url>TestThumbnailUrl</thumbnail_url>" + 
-                           @"<thumbnail_width>640</thumbnail_width><thumbnail_height>480</thumbnail_height><html>TestHtml</html>" + 
-                           @"<width>800</width><height>600</height></oembed>";
-
-            var actual = ResponseDeserializer.DeserializeResponse(response, FormatType.xml);
+            var actual = ResponseDeserializer.DeserializeResponse(response);
             
             Assert.True(FullObject.Equals(actual));
         }
 
-        [Test]
-        public void ProviderDeserializationTestWithMissingPropertiesXml()
-        {
-            var response = @"<oembed><type>video</type><html>TestHtml</html></oembed>";
-
-            var actual = ResponseDeserializer.DeserializeResponse(response, FormatType.xml);
-            
-            Assert.True(MissingPropertiesObject.Equals(actual));
-        }
-
-        [Test]
-        public void ProviderDeserializationTestWithAdditionalPropertiesXml()
-        {
-            var response = @"<oembed><type>video</type><title>TestTitle</title><thumbnail_url>TestThumbnailUrl</thumbnail_url>" + 
-                           @"<thumbnail_width>640</thumbnail_width><thumbnail_height>480</thumbnail_height><html>TestHtml</html>" + 
-                           @"<width>800</width><height>600</height><additional>Test</additional></oembed>";
-
-            var actual = ResponseDeserializer.DeserializeResponse(response, FormatType.xml);
-            
-            Assert.True(FullObject.Equals(actual));
-        }
-        
         private static readonly ResponseObject FullObject = new ResponseObject()
         {
             Type = ResponseType.video,

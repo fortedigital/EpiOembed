@@ -1,41 +1,32 @@
-using System.Xml.Serialization;
 using Newtonsoft.Json;
 
 namespace EPiServer.Oembed.Models
 {
-    [XmlRoot(ElementName = "oembed")]
+
     public class ResponseObject
     {
         
-        [XmlElement(ElementName = "type")]
         [JsonProperty(PropertyName = "type")]
         public ResponseType Type { get; set; }
 
-        [XmlElement(ElementName = "title")]
         [JsonProperty(PropertyName = "title")]
         public string Title { get; set; }
 
-        [XmlElement(ElementName = "thumbnail_url")]
         [JsonProperty(PropertyName = "thumbnail_url")]
         public string ThumbnailUrl { get; set; }
 
-        [XmlElement(ElementName = "thumbnail_width")]
         [JsonProperty(PropertyName = "thumbnail_width")]
         public int ThumbnailWidth { get; set; }
 
-        [XmlElement(ElementName = "thumbnail_height")]
         [JsonProperty(PropertyName = "thumbnail_height")]
         public int ThumbnailHeight { get; set; }
 
-        [XmlElement(ElementName = "html")]
         [JsonProperty(PropertyName = "html")]
         public string Html { get; set; }
 
-        [XmlElement(ElementName = "width")]
         [JsonProperty(PropertyName = "width")]
         public int Width { get; set; }
 
-        [XmlElement(ElementName = "height")]
         [JsonProperty(PropertyName = "height")]
         public int Height { get; set; }
 
@@ -51,6 +42,32 @@ namespace EPiServer.Oembed.Models
                            Html == resp.Html &&
                            Width == resp.Width && Height == resp.Height;
             return equality;   
+        }
+
+        protected bool Equals(ResponseObject other)
+        {
+            return Type == other.Type && string.Equals(Title, other.Title) && 
+                   string.Equals(ThumbnailUrl, other.ThumbnailUrl) && 
+                   ThumbnailWidth == other.ThumbnailWidth && 
+                   ThumbnailHeight == other.ThumbnailHeight && 
+                   string.Equals(Html, other.Html) && 
+                   Width == other.Width && Height == other.Height;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (int) Type;
+                hashCode = (hashCode * 397) ^ (Title != null ? Title.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ThumbnailUrl != null ? ThumbnailUrl.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ ThumbnailWidth;
+                hashCode = (hashCode * 397) ^ ThumbnailHeight;
+                hashCode = (hashCode * 397) ^ (Html != null ? Html.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Width;
+                hashCode = (hashCode * 397) ^ Height;
+                return hashCode;
+            }
         }
     }
 }
