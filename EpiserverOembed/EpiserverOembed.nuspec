@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>EPiServer.OEmbed</id>
+    <id>EPiServer.Oembed</id>
     <version>1.0.0</version>
-	<title>EPiServer.OEmbed</title>
+	<title>EPiServer.Oembed</title>
     <authors>Forte_ Digital</authors>
     <projectUrl>https://github.com/fortedigital/EpiOembed</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
