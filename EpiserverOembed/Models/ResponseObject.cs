@@ -30,6 +30,11 @@ namespace EPiServer.Oembed.Models
         [JsonProperty(PropertyName = "height")]
         public int Height { get; set; }
 
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null || GetType() != obj.GetType()) return false;
@@ -42,16 +47,6 @@ namespace EPiServer.Oembed.Models
                            Html == resp.Html &&
                            Width == resp.Width && Height == resp.Height;
             return equality;   
-        }
-
-        protected bool Equals(ResponseObject other)
-        {
-            return Type == other.Type && string.Equals(Title, other.Title) && 
-                   string.Equals(ThumbnailUrl, other.ThumbnailUrl) && 
-                   ThumbnailWidth == other.ThumbnailWidth && 
-                   ThumbnailHeight == other.ThumbnailHeight && 
-                   string.Equals(Html, other.Html) && 
-                   Width == other.Width && Height == other.Height;
         }
 
         public override int GetHashCode()

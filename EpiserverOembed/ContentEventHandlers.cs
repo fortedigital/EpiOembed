@@ -44,16 +44,16 @@ namespace EPiServer.Oembed
             if (deserializedObj == null)
                 return;
             
-            embedBlock.FullResponse = response;
             embedBlock.ThumbnailUrl = deserializedObj.ThumbnailUrl;
             embedBlock.EmbedHtml = new XhtmlString(deserializedObj.Html);
+            embedBlock.Response = deserializedObj;
         }
 
         private static void ClearBlockProperties(IOEmbedBlock block)
         {
-            block.FullResponse = null;
             block.ThumbnailUrl = null;
             block.EmbedHtml = null;
+            block.Response = null;
         }
     }
 }

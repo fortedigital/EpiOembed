@@ -74,6 +74,8 @@
         <Compile Include="DefaultProviders\YouTubeOEmbedProvider.cs" />
         <Compile Include="IOEmbedBlock.cs" />
         <Compile Include="IOEmbedProvider.cs" />
+        <Compile Include="Models\BaseOEmbedBlock.cs" />
+        <Compile Include="Models\PropertyResponseObject.cs" />
         <Compile Include="Models\ResponseObject.cs" />
         <Compile Include="Models\ResponseType.cs" />
         <Compile Include="OEmbedModule.cs" />
