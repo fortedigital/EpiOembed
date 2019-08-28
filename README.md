@@ -28,3 +28,7 @@ If you're using interface then add [BackingType(typeof(PropertyResponseObject))]
 ## Usage:
 
 Urls to resources are supplied through MediaUrl property in block interface.
+
+You'll probably want to hide other properties from editors.
+
+Other response properties like media width/height, thumbnail width/height can be accessed through Response property
