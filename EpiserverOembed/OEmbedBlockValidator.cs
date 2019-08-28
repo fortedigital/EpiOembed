@@ -10,6 +10,9 @@ namespace EPiServer.Oembed
     {
         public IEnumerable<ValidationError> Validate(IOEmbedBlock instance)
         {
+            if(string.IsNullOrWhiteSpace(instance.MediaUrl))
+                return Enumerable.Empty<ValidationError>();
+            
             var providers = ServiceLocator.Current.GetAllInstances<IOEmbedProvider>();
             if (providers.Any(p => p.CanInterpretMediaUrl(instance.MediaUrl)))
             {

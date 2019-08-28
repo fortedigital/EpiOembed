@@ -66,6 +66,7 @@
         <Compile Include="DefaultProviders\BaseOEmbedProvider.cs" />
         <Compile Include="DefaultProviders\FacebookOEmbedProvider.cs" />
         <Compile Include="DefaultProviders\InstagramOEmbedProvider.cs" />
+        <Compile Include="DefaultProviders\TwitterOEmbedProvider.cs" />
         <Compile Include="DefaultProviders\VimeoOEmbedProvider.cs" />
         <Compile Include="DefaultProviders\YouTubeOEmbedProvider.cs" />
         <Compile Include="IOEmbedBlock.cs" />
