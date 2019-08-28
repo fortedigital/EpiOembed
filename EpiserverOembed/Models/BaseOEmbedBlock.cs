@@ -3,7 +3,9 @@ using EPiServer.DataAnnotations;
 
 namespace EPiServer.Oembed.Models
 {
-    
+    /// <summary>
+    /// Base abstract implementation of IOEmbedBlock interface
+    /// </summary>
     public abstract class BaseOEmbedBlock : BlockData, IOEmbedBlock
     {
         public virtual string MediaUrl { get; set; }

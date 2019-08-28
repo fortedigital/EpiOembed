@@ -1,5 +1,8 @@
 namespace EPiServer.Oembed.DefaultProviders
 {
+    /// <summary>
+    /// Default implementation of Vimeo provider
+    /// </summary>
     public class VimeoOEmbedProvider : BaseOEmbedProvider
     {
         public VimeoOEmbedProvider(int? maxWidth = null, int? maxHeight = null)

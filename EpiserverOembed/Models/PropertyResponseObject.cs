@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 
 namespace EPiServer.Oembed.Models
 {
+    /// <summary>
+    /// Custom propertyData implementation for block's response property 
+    /// </summary>
     [PropertyDefinitionTypePlugIn(Description = "Property for OEmbed response", DisplayName = "OEmbed Response")]
     public class PropertyResponseObject : PropertyLongString
     {

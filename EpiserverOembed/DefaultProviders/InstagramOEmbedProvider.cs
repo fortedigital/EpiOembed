@@ -1,7 +1,8 @@
-using System.Text.RegularExpressions;
-
 namespace EPiServer.Oembed.DefaultProviders
 {
+    /// <summary>
+    /// Default implementation of Instagram provider
+    /// </summary>
     public class InstagramOEmbedProvider : BaseOEmbedProvider
     {
 

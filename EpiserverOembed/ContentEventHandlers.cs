@@ -36,7 +36,7 @@ namespace EPiServer.Oembed
             if(foundProvider == null)
                 return;
             
-            var uri = new Uri(foundProvider.GetRequestUrl(embedBlock));
+            var uri = new Uri(foundProvider.GetRequestUrl(embedBlock.MediaUrl));
             var response = WebRequestHandler.GetResponse(uri);
 
             var deserializedObj = ResponseDeserializer.DeserializeResponse(response);

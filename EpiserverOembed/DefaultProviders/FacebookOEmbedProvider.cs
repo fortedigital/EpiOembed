@@ -2,6 +2,9 @@ using System.Text.RegularExpressions;
 
 namespace EPiServer.Oembed.DefaultProviders
 {
+    /// <summary>
+    /// Default implementation of Facebook provider
+    /// </summary>
     public class FacebookOEmbedProvider : BaseOEmbedProvider
     {
         private string UrlSchemePatternVideos { get; set; }
@@ -38,9 +41,9 @@ namespace EPiServer.Oembed.DefaultProviders
             return false;
         }
 
-        public override string GetRequestUrl(IOEmbedBlock block)
+        public override string GetRequestUrl(string mediaUrl)
         {
-            var url = ApiEndpoint + _resourceType + "/oembed.json?url=" + block.MediaUrl;
+            var url = ApiEndpoint + _resourceType + "/oembed.json?url=" + mediaUrl;
             if (MaxWidth != null)
             {
                 url = url + "&maxwidth=" + MaxWidth;

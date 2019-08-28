@@ -1,5 +1,8 @@
 namespace EPiServer.Oembed.DefaultProviders
 {
+    /// <summary>
+    /// Default implementation of Twitter provider
+    /// </summary>
     public class TwitterOEmbedProvider : BaseOEmbedProvider
     {
         public TwitterOEmbedProvider()

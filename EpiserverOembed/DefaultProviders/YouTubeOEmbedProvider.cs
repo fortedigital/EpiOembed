@@ -1,5 +1,8 @@
 namespace EPiServer.Oembed.DefaultProviders
 {
+    /// <summary>
+    /// Default implementation of YouTube provider
+    /// </summary>
     public class YouTubeOEmbedProvider : BaseOEmbedProvider
     {
         public YouTubeOEmbedProvider(int? maxWidth = null, int? maxHeight = null)
