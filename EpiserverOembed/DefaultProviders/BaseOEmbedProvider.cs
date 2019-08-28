@@ -7,12 +7,7 @@ namespace EPiServer.Oembed.DefaultProviders
         public int? MaxWidth { get; set; }
         public int? MaxHeight { get; set; }
         protected string UrlSchemePattern { get; set; }
-
-        protected BaseOEmbedProvider(int? maxWidth= null, int? maxHeight = null)
-        {
-            MaxWidth = maxWidth;
-            MaxHeight = maxHeight;
-        }
+        protected string ApiEndpoint { get; set; }
         
         public virtual bool CanInterpretMediaUrl(string url)
         {
@@ -21,16 +16,15 @@ namespace EPiServer.Oembed.DefaultProviders
 
         public virtual string GetRequestUrl(IOEmbedBlock block)
         {
-            var url = string.Empty;
-            if (MaxWidth != null)
-            {
-                url = url + "&maxwidth=" + MaxWidth;
-            }
+            var url = ApiEndpoint + "?url=" + block.MediaUrl;
             if (MaxHeight != null)
             {
                 url = url + "&maxheight=" + MaxHeight;
             }
-
+            if (MaxWidth != null)
+            {
+                url = url + "&maxwidth=" + MaxWidth;
+            }
             return url;
         }
     }

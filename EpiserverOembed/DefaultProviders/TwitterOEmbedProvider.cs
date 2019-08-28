@@ -5,11 +5,7 @@ namespace EPiServer.Oembed.DefaultProviders
         public TwitterOEmbedProvider()
         {
             UrlSchemePattern = @"^(https://twitter\.com/.*/status/.*)|(https://.*\.twitter\.com/.*/status/.*)";
-        }
-
-        public override string GetRequestUrl(IOEmbedBlock block)
-        {
-            return "https://publish.twitter.com/oembed?url=" + block.MediaUrl;
+            ApiEndpoint = "https://publish.twitter.com/oembed";
         }
     }
 }
