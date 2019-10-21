@@ -1,4 +1,6 @@
-# EpiOembed - embedding module for EPiServer using OEmbed standard
+# EpiOembed
+
+This plugin will enable you to create blocks displaying any media from sites that support oembed standard
 
 ## Basic configuration:
 
