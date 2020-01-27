@@ -1,15 +1,15 @@
+using System;
 using System.Linq;
 using EPiServer.Core;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
-using EPiServer.Shell;
 
 namespace EPiServer.Oembed
 {
 
-    [ModuleDependency(typeof(ShellInitialization))]
     [InitializableModule]
+    [ModuleDependency(typeof(ConfiguratorModule))]
     public class OEmbedModule : IInitializableModule
     {
         private ContentEventHandlers _contentEventHandlers;

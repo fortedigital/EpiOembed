@@ -23,7 +23,7 @@ namespace EPiServer.Oembed
                 return;
 
             var action = se.Action & SaveAction.ActionMask;
-            if (action != SaveAction.Save)
+            if (action != SaveAction.Publish)
                 return;
 
             if (string.IsNullOrWhiteSpace(embedBlock.MediaUrl))

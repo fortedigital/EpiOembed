@@ -11,7 +11,7 @@ namespace EPiServer.Oembed.DefaultProviders
 
         private string _resourceType;
         
-        public FacebookOEmbedProvider(int? maxWidth = null)
+        public FacebookOEmbedProvider()
         {
             UrlSchemePattern = @"^(https://www\.facebook\.com/.*/posts/.*)|(https://www\.facebook\.com/.*/activity/.*)|" +
                                @"(https://www\.facebook\.com/photo\.php?fbid=.*)|(https://www\.facebook\.com/photos/.*)|" +
@@ -22,8 +22,6 @@ namespace EPiServer.Oembed.DefaultProviders
                                      @"|(https://www\.facebook\.com/video\.php?v=.*)";
 
             ApiEndpoint = "https://www.facebook.com/plugins/";
-
-            MaxWidth = maxWidth;
         }
 
         public override bool CanInterpretMediaUrl(string url)

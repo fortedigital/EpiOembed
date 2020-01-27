@@ -62,6 +62,7 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ConfiguratorModule.cs" />
         <Compile Include="ContentEventHandlers.cs" />
         <Compile Include="DefaultProviders\BaseOEmbedProvider.cs" />
         <Compile Include="DefaultProviders\FacebookOEmbedProvider.cs" />
