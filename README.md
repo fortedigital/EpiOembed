@@ -4,6 +4,8 @@ This plugin will enable you to create blocks displaying any media from sites tha
 
 ## Basic configuration:
 
+**Version 1.0.22942 automatically detects classes implementing IOEmbedProvider interface so you can skip step 1**
+
 1. Configure DI container - register IOembedProviders in context.Services (Default providers available in package):
 
 ```csharp
@@ -26,6 +28,8 @@ public class OEmbedBlock : BlockData, IOEmbedBlock{...}
 ```
 
 If you're using interface then add [BackingType(typeof(PropertyResponseObject))] attribute to Response property
+
+**Make sure that provider has paramaterless constructor**
 
 ## Usage:
 
